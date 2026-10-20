@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Alim Tips — কম্পিউটার, Windows, সফটওয়্যার ও প্রযুক্তির সহজ টিপস।">
+<title>Alim Tips | কম্পিউটার ও প্রযুক্তি</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#172033;--muted:#65718a;--primary:#5b4bff;--secondary:#00b894;--line:#e5eaf3}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+header{background:linear-gradient(120deg,#3326c8,#725bff 60%,#00b894);color:white;padding:32px 18px 26px}
+.wrap{max-width:1050px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-size:clamp(28px,5vw,42px);font-weight:800;letter-spacing:.2px;margin:0}.tagline{margin:5px 0 18px;color:#f0efff}
+.pill{display:inline-block;border:1px solid #ffffff80;border-radius:99px;padding:6px 12px;font-size:13px}
+.searchrow{display:flex;gap:8px;max-width:720px}.searchrow input{flex:1;min-width:0;padding:14px 16px;border:0;border-radius:12px;font-size:16px;outline:none}
+button,.btn{border:0;border-radius:10px;padding:11px 15px;background:var(--primary);color:white;font-weight:700;cursor:pointer;font-size:14px}
+.searchrow button{background:#10213d}.main{padding:26px 16px 50px}
+.categories{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 22px}.categories button{background:#fff;color:#34405b;border:1px solid var(--line)}.categories button.active{background:var(--primary);color:white;border-color:var(--primary)}
+.heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}.heading h2{margin:0;font-size:23px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px}.post{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:0 6px 24px #17203308;display:flex;flex-direction:column}
+.post .emoji{font-size:28px}.label{font-size:12px;font-weight:700;color:#4d42d9;background:#efedff;border-radius:99px;padding:4px 9px;align-self:flex-start;margin:8px 0}
+.post h3{margin:4px 0 8px;font-size:19px;line-height:1.4}.post p{color:var(--muted);margin:0 0 14px;flex:1}.read{align-self:flex-start;background:#eefbf7;color:#087b61}
+.empty{padding:28px;text-align:center;background:white;border-radius:14px;color:var(--muted);grid-column:1/-1}
+.panel{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:22px}.panel h2{margin-top:0}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formgrid .full{grid-column:1/-1}input,select,textarea{width:100%;padding:12px;border:1px solid #d9dfeb;border-radius:10px;font:inherit;background:white;color:var(--ink)}textarea{min-height:110px;resize:vertical}.hint{font-size:13px;color:var(--muted)}.notice{background:#fff8df;border:1px solid #f4dfa0;padding:12px;border-radius:10px;color:#6d5310;font-size:14px}
+footer{text-align:center;padding:22px;color:var(--muted);font-size:13px}
+dialog{border:0;border-radius:16px;max-width:680px;width:calc(100% - 28px);padding:24px;box-shadow:0 20px 70px #0003}dialog::backdrop{background:#10172c99}dialog h2{margin-top:0}.close{float:right;background:#e9edf5;color:#25304a}
+@media(max-width:600px){.formgrid{grid-template-columns:1fr}.formgrid .full{grid-column:auto}.searchrow{flex-wrap:wrap}.searchrow input{flex-basis:100%}.searchrow button{width:100%}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <div class="top"><h1 class="brand">💡 Alim Tips</h1><span class="pill">সহজ প্রযুক্তি, সহজ সমাধান</span></div>
+  <p class="tagline">কম্পিউটার, Windows, সফটওয়্যার ও প্রযুক্তির দরকারি টিপস—সহজ বাংলায়।</p>
+  <div class="searchrow"><input id="search" type="search" placeholder="টিপস খুঁজুন… যেমন: Windows, Wi-Fi" aria-label="টিপস খুঁজুন"><button id="clearSearch">সব টিপস দেখুন</button></div>
+ </div>
+</header>
+<main class="wrap main">
+ <div class="categories" id="categories" aria-label="বিভাগ"></div>
+ <div class="heading"><h2 id="sectionTitle">সর্বশেষ টিপস</h2><span id="count" class="hint"></span></div>
+ <section class="grid" id="posts"></section>
+ <section class="panel" id="addPanel">
+  <h2>✍️ নতুন টিপস যোগ করুন</h2>
+  <p class="notice">গুরুত্বপূর্ণ: এই ফর্মে যোগ করা পোস্ট শুধু এই ব্রাউজারের এই ডিভাইসেই সেভ হবে; অন্য দর্শকের কাছে নিজে থেকে প্রকাশ হবে না। সবার জন্য পোস্ট প্রকাশ করতে Blogger ব্যবহার করুন, অথবা HTML ফাইলে পোস্ট যোগ করে ওয়েবসাইট আবার প্রকাশ করুন।</p>
+  <form id="postForm">
+   <div class="formgrid">
+    <div><label for="title">টিপসের শিরোনাম</label><input id="title" required maxlength="100" placeholder="যেমন: Windows-এর সময় ঠিক করা"></div>
+    <div><label for="category">বিভাগ</label><select id="category"><option>Windows</option><option>কম্পিউটার</option><option>সফটওয়্যার</option><option>ইন্টারনেট</option><option>নিরাপত্তা</option></select></div>
+    <div><label for="emoji">আইকন/ইমোজি</label><input id="emoji" maxlength="8" value="💻"></div>
+    <div><label for="summary">ছোট পরিচিতি</label><input id="summary" required maxlength="180" placeholder="এই টিপসে কী শিখবেন?"></div>
+    <div class="full"><label for="bodyText">টিপসের বিস্তারিত</label><textarea id="bodyText" required placeholder="ধাপে ধাপে টিপস লিখুন..."></textarea></div>
+   </div>
+   <p style="margin-bottom:0"><button type="submit">এই ব্রাউজারে সেভ করুন</button> <button type="button" id="export" style="background:#087b61">পোস্ট ব্যাকআপ ডাউনলোড</button></p>
+   <p class="hint">নিজের ডিভাইসে পোস্ট রাখতে চাইলে নিয়মিত ব্যাকআপ ডাউনলোড করুন।</p>
+  </form>
+ </section>
+</main>
+<footer>© <span id="year"></span> Alim Tips · শেখা হোক সহজ ও নিরাপদ</footer>
+<dialog id="reader"><button class="close" id="closeReader">বন্ধ করুন ✕</button><div id="readerContent"></div></dialog>
+<script>
+const starterPosts=[
+ {id:"s1",title:"Windows 10-এ Date ও Time ঠিক করবেন যেভাবে",category:"Windows",emoji:"🕒",summary:"কম্পিউটারের তারিখ, সময় ও Dhaka টাইম জোন ঠিক করার সহজ নিয়ম।",body:"১. Start থেকে Settings খুলুন।\\n২. Time & Language-এ যান।\\n৩. Date & time খুলুন।\\n৪. Time zone তালিকায় (UTC+06:00) Dhaka থাকলে সেটি নির্বাচন করুন।\\n৫. সময় ভুল থাকলে Set time automatically চালু করে দেখুন।\\n\\nনোট: আপনার Windows সংস্করণ অনুযায়ী মেনুর নাম একটু আলাদা হতে পারে।"},
+ {id:"s2",title:"কম্পিউটার ধীর হলে প্রথমে যা করবেন",category:"কম্পিউটার",emoji:"⚡",summary:"অপ্রয়োজনীয় Startup অ্যাপ বন্ধ করে কম্পিউটার কিছুটা দ্রুত রাখুন।",body:"১. Ctrl + Shift + Esc চাপুন।\\n২. Task Manager খুললে Startup tab বা Startup apps নির্বাচন করুন।\\n৩. যে অ্যাপ চালু হওয়ার সময় দরকার নেই, সেটি নির্বাচন করে Disable করুন।\\n৪. অচেনা Windows system item বন্ধ করবেন না।\\n৫. কম্পিউটার Restart করে দেখুন।"},
+ {id:"s3",title:"সফটওয়্যার নিরাপদে ডাউনলোড করার নিয়ম",category:"সফটওয়্যার",emoji:"🛡️",summary:"ভুয়া Download বোতাম ও সন্দেহজনক ফাইল এড়িয়ে চলুন।",body:"১. সম্ভব হলে সফটওয়্যারের অফিসিয়াল ওয়েবসাইট ব্যবহার করুন।\\n২. অতিরিক্ত installer বা অপ্রয়োজনীয় extension ইনস্টল করবেন না।\\n৩. Windows Security চালু রাখুন।\\n৪. অচেনা ফাইল চালানোর আগে প্রকাশক ও ফাইলের নাম যাচাই করুন।\\n৫. পাসওয়ার্ড বা OTP কোনো সফটওয়্যারকে দেবেন না।"},
+ {id:"s4",title:"Wi-Fi সংযোগ না হলে সহজ পরীক্ষা",category:"ইন্টারনেট",emoji:"📶",summary:"Wi-Fi বন্ধ-চালু, Restart এবং নেটওয়ার্ক পরীক্ষা করুন।",body:"১. Wi-Fi বন্ধ করে আবার চালু করুন।\\n২. অন্য ডিভাইসে ইন্টারনেট চলে কি না দেখুন।\\n৩. Router-এর বিদ্যুৎ সংযোগ পরীক্ষা করুন।\\n৪. প্রয়োজন হলে Router ২০–৩০ সেকেন্ড বন্ধ রেখে চালু করুন।\\n৫. তবুও সমস্যা থাকলে ইন্টারনেট সেবাদাতার সঙ্গে যোগাযোগ করুন।"}
+];
+const STORE="alimTipsCustomPostsV1";let active="সব বিভাগ";
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function custom(){try{return JSON.parse(localStorage.getItem(STORE)||"[]")}catch{return []}}
+function allPosts(){return [...custom(),...starterPosts]}
+function renderCategories(){
+ const cats=["সব বিভাগ",...new Set(allPosts().map(p=>p.category))];
+ document.getElementById("categories").innerHTML=cats.map(c=>`<button class="${c===active?"active":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
+ document.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{active=b.dataset.cat;renderCategories();renderPosts()});
+}
+function renderPosts(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ const filtered=allPosts().filter(p=>(active==="সব বিভাগ"||p.category===active)&&[p.title,p.category,p.summary,p.body].join(" ").toLowerCase().includes(q));
+ document.getElementById("sectionTitle").textContent=q?`“${q}” অনুসন্ধানের ফল`:active==="সব বিভাগ"?"সর্বশেষ টিপস":active+" টিপস";
+ document.getElementById("count").textContent=filtered.length+"টি টিপস";
+ document.getElementById("posts").innerHTML=filtered.length?filtered.map(p=>`<article class="post"><span class="emoji">${esc(p.emoji||"💡")}</span><span class="label">${esc(p.category)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p><button class="read" data-read="${esc(p.id)}">বিস্তারিত পড়ুন →</button></article>`).join(""):`<div class="empty">কোনো টিপস পাওয়া যায়নি। অন্য শব্দ দিয়ে খুঁজে দেখুন।</div>`;
+ document.querySelectorAll("[data-read]").forEach(b=>b.onclick=()=>openPost(b.dataset.read));
+}
+function openPost(id){
+ const p=allPosts().find(x=>x.id===id);if(!p)return;
+ document.getElementById("readerContent").innerHTML=`<span class="label">${esc(p.category)}</span><h2>${esc(p.emoji||"💡")} ${esc(p.title)}</h2><p>${esc(p.summary)}</p><hr><div style="white-space:pre-wrap;line-height:1.9">${esc(p.body)}</div>`;
+ document.getElementById("reader").showModal();
+}
+document.getElementById("search").addEventListener("input",renderPosts);
+document.getElementById("clearSearch").onclick=()=>{document.getElementById("search").value="";active="সব বিভাগ";renderCategories();renderPosts()};
+document.getElementById("closeReader").onclick=()=>document.getElementById("reader").close();
+document.getElementById("postForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const p={id:"u"+Date.now(),title:document.getElementById("title").value.trim(),category:document.getElementById("category").value,emoji:document.getElementById("emoji").value.trim()||"💡",summary:document.getElementById("summary").value.trim(),body:document.getElementById("bodyText").value.trim()};
+ const items=custom();items.unshift(p);
+ try{localStorage.setItem(STORE,JSON.stringify(items));e.target.reset();document.getElementById("emoji").value="💻";active="সব বিভাগ";renderCategories();renderPosts();alert("এই ব্রাউজারে পোস্ট সেভ হয়েছে। এটি সবার ওয়েবসাইটে প্রকাশ হয়নি।")}
+ catch{alert("সেভ করা যায়নি। ব্রাউজারের স্টোরেজ খালি করে আবার চেষ্টা করুন।")}
+});
+document.getElementById("export").onclick=()=>{
+ const blob=new Blob([JSON.stringify(custom(),null,2)],{type:"application/json"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alim-tips-backup.json";a.click();URL.revokeObjectURL(a.href);
+};
+document.getElementById("year").textContent=new Date().getFullYear();renderCategories();renderPosts();
+</script>
+</body>
+</html>
